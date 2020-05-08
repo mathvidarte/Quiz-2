@@ -3,6 +3,8 @@ import processing.core.PApplet;
 public class Main extends PApplet {
 	
 	Cuadrado[][] matriz = new Cuadrado[20][30];
+	
+	boolean mover;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -15,7 +17,7 @@ public class Main extends PApplet {
 	}
 	
 	public void setup () {
-		
+		mover = false;
 		
 		for (int i = 0; i < 20; i++) {
 			for (int j = 0; j < 30; j++) {
@@ -45,6 +47,10 @@ public class Main extends PApplet {
 						matriz[i][j].draw(1);
 					else matriz[i][j].draw(0);
 					}
+				if (mover == true) {
+					
+					new Thread (matriz[i][j]).start();
+				}
 			}
 		}
 		
@@ -59,7 +65,7 @@ public class Main extends PApplet {
 	
 	
 	public void mousePressed () {
-		
+		mover = true;
 		
 	}
 
